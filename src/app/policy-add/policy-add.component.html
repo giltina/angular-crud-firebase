@@ -1,0 +1,25 @@
+<h1> Add New Policy </h1>
+
+<form [formGroup]="policyForm" (ngSubmit)="onSubmit()">
+  <input type = "text" name = "policynumber" placeholder = "Policy Number" formControlName="policynumber" >
+  <br/>
+
+  <input type = "date" name = "creationdate" placeholder = "Creation Date" formControlName="creationdate" >
+  <br/>
+
+  <input type = "date" name = "effectivedate" placeholder = "Effective Date" formControlName="effectivedate" >
+  <br/>
+
+  <input type = "date" name = "expiredate" placeholder = "Expired Date" formControlName="expiredate" >
+  <br/>
+
+  <input type = "text" name = "paymentoption" placeholder = "Payment Option" formControlName="paymentoption" >
+  <br/>
+
+  <input type = "text" name = "policyamount" placeholder = "Policy Amount" formControlName="policyamount" >
+  <br/>
+
+  <textarea name = "extrainfo" placeholder = "Extra Info" formControlName="extrainfo" ></textarea>
+  <br/>
+  <input type = "submit" value = "Send">
+</form> 
