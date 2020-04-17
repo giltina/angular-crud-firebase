@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Policy } from 'src/app/policy.model';
+import { Person } from './person';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Router } from '@angular/router';
 
@@ -9,8 +12,9 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class PolicyService {
+  baseURL = 'http://localhost:3000/';
 
-  constructor(private firestore: AngularFirestore, public afAuth: AngularFireAuth, private router: Router) { }
+  constructor(private firestore: AngularFirestore, public afAuth: AngularFireAuth, private router: Router, private http: HttpClient) { }
 
   getPolicies() {
     return this.firestore.collection('policies').snapshotChanges();
@@ -55,6 +59,19 @@ SignIn(email, password) {
     return this.afAuth.signOut().then(() => {
       this.router.navigate(['/admin/login']);
     });
+  }
+
+  getPeople(): Observable<Person[]> {
+    console.log('getPeople ' + this.baseURL + 'people')
+    return this.http.get<Person[]>(this.baseURL + 'people')
+  }
+
+  addPerson(person: Person): Observable<any> {
+    const headers = { 'content-type': 'application/json'}
+    const body = JSON.stringify(person);
+    console.log(body);
+    // tslint:disable-next-line: object-literal-key-quotes
+    return this.http.post(this.baseURL + 'people', body, {'headers': headers})
   }
 
 }

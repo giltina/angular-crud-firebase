@@ -21,6 +21,8 @@ import { VerifyEmailComponent } from './admin/verify-email/verify-email.componen
 import { AdminComponent } from './admin/admin/admin.component';
 
 import { AdminModule } from './admin/admin.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormAppointmentComponent } from './form-appointment/form-appointment.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { AdminModule } from './admin/admin.module';
     RegisterComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    AdminComponent
+    AdminComponent,
+    FormAppointmentComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { AdminModule } from './admin/admin.module';
     FormsModule,
     ReactiveFormsModule,
     AdminModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule
   ],
   providers: [PolicyService],
   bootstrap: [AppComponent]

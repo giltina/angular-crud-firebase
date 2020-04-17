@@ -8,7 +8,7 @@ import { PolicyService } from 'src/app/policy.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private policyService: PolicyService) { }
+  constructor(public policyService: PolicyService) { }
 
   ngOnInit(): void {
   }
